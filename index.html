@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>Shibumaku Computer Club</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <button id="home-button" class="brand" type="button" aria-label="ホームへ戻る">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Shibumaku Computer Club</span>
+    </button>
+    <button id="header-back" class="quiet-button hidden" type="button">← ゲーム一覧</button>
+  </header>
+
+  <main>
+    <section id="home-screen" class="screen active">
+      <div class="hero">
+        <p class="eyebrow">ENJU FESTIVAL 2026</p>
+        <h1>考えて、遊んで、<br><span>ひらめこう。</span></h1>
+        <p class="lead">数学と戦略を楽しむ、シンプルなゲームコレクション。</p>
+        <div class="hero-mascot" aria-label="ゲーム案内役の女の子">
+          <div class="speech-bubble">いっしょに遊ぼう！</div>
+          <img src="assets/mascot-girl.png" alt="ゲーム案内役のドット絵の女の子">
+        </div>
+      </div>
+      <div class="game-grid">
+        <button class="game-card nim-card" data-screen="nim-menu" type="button">
+          <span class="card-number">01</span><span class="card-icon stones">● ● ●</span>
+          <span class="card-title">Nim</span><span class="card-copy">石を読み、最後の一手をつかむ。</span>
+          <span class="card-link">3つのルールで遊ぶ →</span>
+        </button>
+        <button class="game-card othello-card" data-screen="othello-menu" type="button">
+          <span class="card-number">02</span><span class="card-icon discs">● ○ ●</span>
+          <span class="card-title">オセロ</span><span class="card-copy">5段階のAIに挑戦する。</span>
+          <span class="card-link">対戦相手を選ぶ →</span>
+        </button>
+        <article class="game-card coming-card" aria-disabled="true">
+          <span class="card-number">03</span><span class="coming-label">COMING SOON</span>
+          <span class="card-title">次のゲーム</span><span class="card-copy">新しいゲームを準備中です。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="nim-menu" class="screen narrow">
+      <div class="page-heading"><p class="eyebrow">GAME 01</p><h2>Nim</h2><p>ルールを選んでAIと対戦しよう。</p></div>
+      <div class="choice-list">
+        <button data-nim="single" type="button"><span><b>1山のNim</b><small>15個の石から1〜3個取る</small></span><i>→</i></button>
+        <button data-nim="normal" type="button"><span><b>通常のNim</b><small>最後の石を取ったら勝ち</small></span><i>→</i></button>
+        <button data-nim="misere" type="button"><span><b>ミゼールNim</b><small>最後の石を取ったら負け</small></span><i>→</i></button>
+      </div>
+    </section>
+
+    <section id="nim-game" class="screen game-screen">
+      <div class="game-top"><div><p class="eyebrow">NIM</p><h2 id="nim-title">通常のNim</h2></div><button class="restart-button" id="nim-restart" type="button">↻ はじめから</button></div>
+      <div class="nim-play-area">
+        <div class="nim-main-panel">
+          <div class="status-panel"><span id="nim-turn-dot" class="turn-dot"></span><strong id="nim-status">あなたの番です</strong><small id="nim-rule"></small></div>
+          <div id="nim-board" class="nim-board" aria-label="石の山"></div>
+          <div id="nim-controls" class="nim-controls">
+            <div class="nim-picker">
+              <span>取る個数</span><div id="take-buttons" class="take-buttons"></div>
+              <button id="nim-hint-toggle" class="inline-hint-button" type="button" aria-controls="nim-hints">💡 ヒント1を見る</button>
+              <div id="nim-hints" class="single-hint hidden" aria-live="polite"></div>
+            </div>
+            <button id="nim-take" class="primary-button" type="button">石を取る</button>
+          </div>
+        </div>
+        <div class="mascot-comment nim-side-mascot">
+          <p id="nim-comment" class="speech-bubble" aria-live="polite">対戦よろしく！</p>
+          <img src="assets/mascot-girl.png" alt="オレンジ髪のゲーム案内役とクラゲのペット">
+        </div>
+      </div>
+    </section>
+
+    <section id="othello-menu" class="screen narrow">
+      <div class="page-heading"><p class="eyebrow">GAME 02</p><h2>オセロ</h2><p>対戦するAIの強さを選ぼう。あなたは黒です。</p></div>
+      <div class="choice-list level-list">
+        <button data-level="greedy" type="button"><em>LEVEL 1</em><span><b>貪欲</b><small>取れる石が多い手を選びます</small></span><i>→</i></button>
+        <button data-level="position" type="button"><em>LEVEL 2</em><span><b>位置優先</b><small>角や辺を大切にします</small></span><i>→</i></button>
+        <button data-level="mobility" type="button"><em>LEVEL 3</em><span><b>着手可能数</b><small>次の選択肢をコントロールします</small></span><i>→</i></button>
+        <button data-level="minimax" type="button"><em>LEVEL 4</em><span><b>Minimax</b><small>数手先を読んで戦います</small></span><i>→</i></button>
+        <button data-level="alpha" class="challenge" type="button"><em>FINAL</em><span><b>部員からの挑戦状</b><small>私たちの最強AIです</small></span><i>→</i></button>
+      </div>
+    </section>
+
+    <section id="othello-game" class="screen game-screen othello-wrap">
+      <div class="game-top"><div><p class="eyebrow">OTHELLO</p><h2 id="othello-title">貪欲</h2></div><button class="restart-button" id="othello-restart" type="button">↻ はじめから</button></div>
+      <div class="scorebar">
+        <div class="player active" id="black-player"><span class="disc black"></span><span>あなた</span><strong id="black-score">2</strong></div>
+        <span class="versus">VS</span>
+        <div class="player" id="white-player"><span class="disc white"></span><span>AI</span><strong id="white-score">2</strong></div>
+      </div>
+      <div class="othello-play-area">
+        <div class="othello-board-column">
+          <p id="othello-status" class="board-status">あなたの番です</p>
+          <div id="othello-board" class="othello-board" role="grid" aria-label="オセロ盤"></div>
+          <p class="hint"><span class="hint-dot"></span>印のあるマスに置けます</p>
+        </div>
+        <div class="mascot-comment othello-comment">
+          <p id="othello-comment" class="speech-bubble" aria-live="polite">対戦よろしく！</p>
+          <img src="assets/mascot-girl.png" alt="オレンジ髪のゲーム案内役とクラゲのペット">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="result-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="result-title">
+    <div class="modal-card"><p class="eyebrow">GAME SET</p><h2 id="result-title">勝ち！</h2><p id="result-copy"></p><div class="modal-actions"><button id="play-again" class="primary-button" type="button">もう一度</button><button id="back-to-list" class="quiet-button" type="button">ゲーム一覧へ</button></div></div>
+  </div>
+
+  <script src="game-logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
