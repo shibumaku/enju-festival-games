@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>写真で場所当てクイズ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="collection-nav" aria-label="ゲームコレクション">
+      <a href="../index.html">← ゲーム一覧へ</a>
+    </nav>
+    <header data-furigana-root>
+      <h1>渋幕ゲッサー</h1>
+      <p>写真を見て、どこで撮られたかを4択で答えるクイズです。</p>
+    </header>
+
+    <main id="startScreen" class="quiz-card screen active" data-furigana-root>
+      <div class="screen-content">
+        <h2>難易度を選んでください</h2>
+        <div class="difficulty-buttons">
+          <div class="difficulty-option">
+            <button id="easyButton" class="button button-secondary" aria-describedby="easyDescription">かんたん</button>
+            <div id="easyDescription" class="difficulty-tooltip" role="tooltip">渋幕生じゃない人におすすめ。渋幕の有名な施設を学べるよ</div>
+          </div>
+          <div class="difficulty-option">
+            <button id="normalButton" class="button button-secondary" aria-describedby="normalDescription">ふつう</button>
+            <div id="normalDescription" class="difficulty-tooltip" role="tooltip">渋幕についてもう少しくわしくなれるよ</div>
+          </div>
+          <div class="difficulty-option">
+            <button id="hardButton" class="button button-secondary" aria-describedby="hardDescription">むずかしい</button>
+            <div id="hardDescription" class="difficulty-tooltip" role="tooltip">渋幕生におすすめだけど、すこしかんたんかも。</div>
+          </div>
+          <div class="difficulty-option">
+            <button id="oniButton" class="button button-secondary" aria-describedby="oniDescription">おに</button>
+            <div id="oniDescription" class="difficulty-tooltip" role="tooltip">結構難しい。全問正解できたらすごい！</div>
+          </div>
+        </div>
+        <button id="furiganaButton" class="text-button" type="button" aria-pressed="false">ふりがな: OFF</button>
+      </div>
+    </main>
+
+    <main id="quizScreen" class="quiz-card screen">
+      <div class="photo-frame">
+        <img id="photo" src="" alt="Location photo">
+        <div id="progress" class="progress"></div>
+      </div>
+
+      <div id="choices" class="choices"></div>
+
+      <div class="status-bar">
+        <div>
+          <div id="message" class="message">選択肢をクリックしてください。</div>
+          <div id="explanation" class="explanation"></div>
+        </div>
+        <div class="score"><span id="scoreLabel">正答数</span>: <span id="score">0</span> / <span id="total">0</span><br><span id="pointsLabel">スコア</span>: <span id="points">0</span> pt</div>
+      </div>
+
+      <button id="nextButton" class="button button-primary" disabled>次へ</button>
+    </main>
+
+    <main id="explanationScreen" class="quiz-card screen">
+      <div class="photo-frame">
+        <img id="explanationPhoto" src="" alt="解説写真">
+        <div id="explanationProgress" class="progress"></div>
+      </div>
+
+      <div class="explanation-panel">
+        <div id="explanationMessage" class="message"></div>
+        <div id="explanationContent" class="explanation"></div>
+      </div>
+
+      <div class="status-bar explanation-status">
+        <div class="score"><span id="explanationScoreLabel">正答数</span>: <span id="explanationScore">0</span> / <span id="explanationTotal">0</span><br><span id="explanationPointsLabel">スコア</span>: <span id="explanationPoints">0</span> pt</div>
+      </div>
+
+      <button id="explanationNextButton" class="button button-primary" type="button" disabled>次へ</button>
+    </main>
+
+    <main id="resultScreen" class="quiz-card screen">
+      <div class="screen-content">
+        <h2 data-furigana-root>結果</h2>
+        <p id="resultText" class="result-text"></p>
+        <p id="finalExplanation" class="final-explanation"></p>
+        <button id="restartButton" class="button button-primary" data-furigana-root>最初に戻る</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

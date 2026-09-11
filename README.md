@@ -16,5 +16,7 @@ python3 -m http.server 8000
 
 - Nim: 1山のNim、通常のNim、ミゼールNim
 - オセロ: 貪欲、位置優先、着手可能数、Minimax、部員からの挑戦状
+- Neon Shift: Unityroomで公開されている外部ゲーム
+- 渋幕ゲッサー: 校内写真から撮影場所を当てる4択クイズ
 
 Unity Room製ゲームを追加する場合は、トップ画面のカードにURLを設定して外部リンクとして利用できます。
